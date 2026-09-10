@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KATSUHARA | 株式会社勝原製作所 — 提案と挑戦で、ものづくりに未来を</title>
+<meta name="description" content="鳥取県鳥取市の株式会社勝原製作所。創業100年の歴史を持つ金属加工・受託製造とエクステリア事業。一貫生産体制とデザインの力で、未来のものづくりを提案します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="index.html" class="logo" aria-label="KATSUHARA - 株式会社勝原製作所">
+    <img src="assets/img/logo.svg" alt="KATSUHARA">
+  </a>
+  <nav>
+    <a href="advantage/">当社の強み</a>
+    <a href="business/">事業内容</a>
+    <a href="company/">会社案内</a>
+    <a href="news/">お知らせ</a>
+    <a href="contact/">お問い合わせ</a>
+    <a href="recruit/" class="nav-cta">採用情報</a>
+  </nav>
+  <button class="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner" style="max-width:1000px;">
+    <p class="hero-kicker">Proposal &amp; Challenge</p>
+    <h1 class="hero-h1"><strong>提案と挑戦で、</strong><br>ものづくりに未来を。</h1>
+    <p class="hero-sub">創業100年のものづくりに、デザインの力を。<br>鳥取から、世界の現場へ。</p>
+    <div class="hero-btns">
+      <a href="company/" class="btn-fill">会社を知る
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+      <a href="recruit/" class="btn-ghost">採用情報を見る
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers" aria-label="数字で見る勝原製作所">
+  <div class="ncard fade"><div class="nval">90<em>年以上</em></div><div class="nlabel">の歴史 / Years</div></div>
+  <div class="ncard fade"><div class="nval">15<em>億円</em></div><div class="nlabel">売上 / Revenue</div></div>
+  <div class="ncard fade"><div class="nval"><span class="count" data-t="4">4</span><em>棟</em></div><div class="nlabel">自社工場 / Factories</div></div>
+  <div class="ncard fade"><div class="nval">60<em>名</em></div><div class="nlabel">従業員数 / Employees</div></div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="concept-photo">
+    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=85" alt="工場内作業の様子">
+  </div>
+  <div class="concept-body">
+    <span class="s-label fade">Philosophy</span>
+    <h2 class="s-title fade">挑戦と提案<br><strong>Challenge &amp; Proposal</strong></h2>
+    <p class="s-desc fade">単に「作る」だけでなく、お客様の課題を共に考え最適な解を提案する。長年の製造実績を土台に、変化を恐れず挑み続けるのが勝原製作所です。</p>
+    <div class="clist">
+      <div class="citem fade"><span class="cnum">01</span><div><h4>一貫生産体制による提案力</h4><p>企画・設計から量産まで社内一貫。コストと品質を両立した最適解を提案します。</p></div></div>
+      <div class="citem fade"><span class="cnum">02</span><div><h4>スピード感をもって動く</h4><p>試作から量産まで、スピード感をもってお客様の「今すぐ」に応えます。</p></div></div>
+      <div class="citem fade"><span class="cnum">03</span><div><h4>鳥取から、全国へ</h4><p>ISO取得済みの品質管理体制で、鳥取から全国の取引先へ信頼を積み重ねています。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="strengths" id="strengths">
+  <div class="str-head fade">
+    <span class="s-label">Our Strengths</span>
+    <h2 class="s-title">5つの強み</h2>
+  </div>
+  <div class="str-grid">
+    <a href="advantage/#integrated" class="scard fade">
+      <span class="sn">01</span>
+      <div class="stitle">一貫生産体制</div>
+      <div class="sdesc">企画・試作・量産を社内で完結。スピードとコストを最適化します。</div>
+      <svg class="sarr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M13 3H4M13 3v9"/></svg>
+    </a>
+    <a href="advantage/#processing" class="scard fade">
+      <span class="sn">02</span>
+      <div class="stitle">加工技術力</div>
+      <div class="sdesc">レーザー・プレス・曲げ加工など多彩な金属加工技術を有しています。</div>
+      <svg class="sarr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M13 3H4M13 3v9"/></svg>
+    </a>
+    <a href="advantage/#equipment" class="scard fade">
+      <span class="sn">03</span>
+      <div class="stitle">設備一覧</div>
+      <div class="sdesc">最新鋭設備を揃えた4棟の自社工場で安定した生産体制を実現。</div>
+      <svg class="sarr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M13 3H4M13 3v9"/></svg>
+    </a>
+    <a href="advantage/#design" class="scard fade">
+      <span class="sn">04</span>
+      <div class="stitle">企画デザイン力</div>
+      <div class="sdesc">機能美を追求した製品企画・デザイン提案で付加価値を生み出します。</div>
+      <svg class="sarr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M13 3H4M13 3v9"/></svg>
+    </a>
+    <a href="advantage/#quality" class="scard fade">
+      <span class="sn">05</span>
+      <div class="stitle">品質への取り組み</div>
+      <div class="sdesc">ISO取得済みの厳格な品質管理でお客様の信頼にお応えします。</div>
+      <svg class="sarr" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M13 3H4M13 3v9"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section class="business" id="business">
+  <a href="business/#contract" class="bcard">
+    <div class="bbg" style="background-image:url('https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1200&q=80')"></div>
+    <div class="bovl"></div>
+    <div class="bcnt">
+      <div class="blbl">Business 01</div>
+      <div class="btitl">Contract</div>
+      <span class="btitl-ja">受託製造事業</span>
+      <span class="blink">詳しく見る
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg>
+      </span>
+    </div>
+  </a>
+  <a href="business/#exterior" class="bcard">
+    <div class="bbg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80')"></div>
+    <div class="bovl"></div>
+    <div class="bcnt">
+      <div class="blbl">Business 02</div>
+      <div class="btitl">Exterior</div>
+      <span class="btitl-ja">エクステリア事業</span>
+      <span class="blink">詳しく見る
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg>
+      </span>
+    </div>
+  </a>
+</section>
+
+<!-- RECRUIT -->
+<section class="recruit" id="recruit">
+  <div class="rphoto">
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80" alt="勝原製作所の職場">
+  </div>
+  <div class="rbody">
+    <span class="s-label fade">Recruit</span>
+    <h2 class="s-title fade">ともに挑戦する<br><strong>仲間を探しています。</strong></h2>
+    <p class="s-desc fade">年功序列ではなく、提案と挑戦を評価する場所。製造業の常識にとらわれない発想と行動力を求めています。</p>
+    <div class="rlist">
+      <a href="recruit/#data" class="ritem fade"><div class="ritem-l"><span class="rn">01</span><span class="rt">データで見る勝原製作所</span></div><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg></a>
+      <a href="recruit/#environment" class="ritem fade"><div class="ritem-l"><span class="rn">02</span><span class="rt">職場環境</span></div><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg></a>
+      <a href="recruit/#benefits" class="ritem fade"><div class="ritem-l"><span class="rn">03</span><span class="rt">制度・福利厚生</span></div><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg></a>
+      <a href="recruit/#interview" class="ritem fade"><div class="ritem-l"><span class="rn">04</span><span class="rt">先輩社員インタビュー</span></div><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg></a>
+      <a href="recruit/#requirements" class="ritem fade"><div class="ritem-l"><span class="rn">05</span><span class="rt">募集要項</span></div><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg></a>
+    </div>
+    <div class="rcta fade">
+      <a href="recruit/" class="btn-sm">採用情報をすべて見る
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="news-aside">
+      <span class="s-label fade">News</span>
+      <h2 class="s-title fade">お知らせ</h2>
+      <a href="news/" class="nmore fade">すべて見る
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h6M5 2l3 3-3 3"/></svg>
+      </a>
+    </div>
+    <div class="nlist">
+      <a href="news/" class="nitem fade">
+        <span class="ndate">2026.04.01</span>
+        <span class="ntag">Info</span>
+        <span class="nttl">ゴールデンウィーク休業のお知らせ</span>
+        <svg class="narr" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg>
+      </a>
+      <a href="news/" class="nitem fade">
+        <span class="ndate">2025.12.24</span>
+        <span class="ntag">Culture</span>
+        <span class="nttl">交友会によるクリスマスイベントを開催しました</span>
+        <svg class="narr" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg>
+      </a>
+      <a href="news/" class="nitem fade">
+        <span class="ndate">2025.12.01</span>
+        <span class="ntag">Info</span>
+        <span class="nttl">第4工場 稼働開始のお知らせ</span>
+        <svg class="narr" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg>
+      </a>
+      <a href="news/" class="nitem fade">
+        <span class="ndate">2025.10.15</span>
+        <span class="ntag">Recruit</span>
+        <span class="nttl">2026年度新卒採用説明会を開催します</span>
+        <svg class="narr" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section class="company" id="company">
+  <div class="cinfo">
+    <span class="s-label fade">Company</span>
+    <h2 class="s-title fade">会社案内</h2>
+    <table class="ctable fade">
+      <tr><th>社名</th><td>株式会社 勝原製作所<br><small style="font-size:11px;color:var(--muted);letter-spacing:.08em;">KATSUHARA Factory Corporation</small></td></tr>
+      <tr><th>所在地</th><td>〒689-1121<br>鳥取県鳥取市南栄町２番地</td></tr>
+      <tr><th>電話</th><td>0857-53-3381</td></tr>
+      <tr><th>営業時間</th><td>8:20〜17:10（土日祝除く）</td></tr>
+      <tr><th>認証</th><td>ISO 9001 / ISO 14001</td></tr>
+    </table>
+    <div style="margin-top:36px;">
+      <a href="company/" class="btn-outline-navy">会社概要を見る
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="cmap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1347.6282539402805!2d134.24568845378553!3d35.455769509554806!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3Af31839a6a8be4851!2z77yI5qCq77yJ5Yud5Y6f6KO95L2c5omA!5e0!3m2!1sja!2sjp!4v1539323043357" allowfullscreen loading="lazy" title="勝原製作所 地図"></iframe>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta">
+  <div>
+    <h3>お問い合わせ</h3>
+    <p>製品・技術のご相談、お見積もりはお気軽にどうぞ</p>
+  </div>
+  <div class="cright">
+    <div class="ctel">0857-53-3381<small>受付 8:20〜17:10（土日祝除く）</small></div>
+    <a href="contact/" class="btn-sm">メールで問い合わせる
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-in">
+    <div>
+      <span class="flogo">
+        <img src="assets/img/logo_white.png" alt="KATSUHARA">
+      </span>
+      <div class="faddr">
+        株式会社 勝原製作所<br>
+        〒689-1121 鳥取県鳥取市南栄町２番地<br>
+        TEL: 0857-53-3381 / FAX: 0857-53-4538
+      </div>
+    </div>
+    <nav class="fnav">
+      <div class="fg">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="company/">会社概要・沿革</a></li>
+          <li><a href="company/#message">社長挨拶</a></li>
+          <li><a href="company/#philosophy">経営理念</a></li>
+          <li><a href="advantage/#quality">ISOの取り組み</a></li>
+        </ul>
+      </div>
+      <div class="fg">
+        <h4>Business</h4>
+        <ul>
+          <li><a href="business/#contract">受託製造事業</a></li>
+          <li><a href="business/#exterior">エクステリア事業</a></li>
+          <li><a href="advantage/">当社の強み</a></li>
+          <li><a href="advantage/#equipment">設備一覧</a></li>
+        </ul>
+      </div>
+      <div class="fg">
+        <h4>Recruit</h4>
+        <ul>
+          <li><a href="recruit/">採用情報</a></li>
+          <li><a href="recruit/#data">データで見る</a></li>
+          <li><a href="recruit/#environment">職場環境</a></li>
+          <li><a href="recruit/#interview">先輩インタビュー</a></li>
+          <li><a href="recruit/#requirements">募集要項</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="fbot">
+    <span class="fcopy">© 2026 KATSUHARA Factory Corporation. All Rights Reserved.</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

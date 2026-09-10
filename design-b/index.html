@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DESIGN PROPOSAL TYPE-B | 株式会社 勝原製作所</title>
+<meta name="description" content="勝原製作所コーポレートサイト デザイン提案B案（ブループリント特化）">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ink:#14324E;          /* 製図インク */
+    --ink-2:#3D5A78;
+    --mute:#7C93A8;
+    --paper:#FAFBFC;        /* 図面用紙 */
+    --grid:rgba(20,50,78,.06);
+    --grid-2:rgba(20,50,78,.11);
+    --line:rgba(20,50,78,.25);
+    --line-2:rgba(20,50,78,.5);
+    --cyan:#0F3557;         /* 青焼き */
+    --red:#B3342E;          /* 朱肉 */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#E9EDF1;color:var(--ink);font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;padding:16px}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* ============ 図面枠（シート） ============ */
+  .sheet{
+    max-width:1408px;margin:0 auto;background:var(--paper);
+    border:1.5px solid var(--ink);position:relative;
+    box-shadow:0 24px 60px -30px rgba(20,50,78,.35);
+  }
+  .sheet::before{content:"";position:absolute;inset:8px;border:.75px solid var(--line-2);pointer-events:none;z-index:3}
+  /* 方眼 */
+  .sheet::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+      linear-gradient(var(--grid-2) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid-2) 1px,transparent 1px);
+    background-size:22px 22px,22px 22px,110px 110px,110px 110px;}
+  .sheet-inner{position:relative;z-index:2;padding:34px 44px 0}
+
+  /* ゾーン記号 */
+  .zones{position:absolute;z-index:4;display:flex;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--mute);letter-spacing:.1em;pointer-events:none}
+  .zones.top{top:-1px;left:40px;right:40px;justify-content:space-between}
+  .zones.top span{transform:translateY(-140%)}
+  .zones.left{left:-1px;top:60px;bottom:60px;flex-direction:column;justify-content:space-between}
+  .zones.left span{transform:translateX(-160%)}
+
+  /* ============ ヘッダー（帯） ============ */
+  .bar{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    border:1px solid var(--ink);background:#fff;
+    padding:10px 18px;margin-bottom:40px;flex-wrap:wrap;
+  }
+  .bar .id{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--ink)}
+  .bar .id b{font-weight:600}
+  .bar nav{display:flex;gap:20px;flex-wrap:wrap}
+  .bar nav a{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-2);border-bottom:1px solid transparent;padding:2px 0;transition:.2s}
+  .bar nav a:hover{color:var(--ink);border-color:var(--ink)}
+  .bar .back{font-size:10.5px;font-family:"IBM Plex Mono",monospace;color:var(--red);border:1px solid var(--red);padding:5px 12px;transition:.2s}
+  .bar .back:hover{background:var(--red);color:#fff}
+
+  /* ============ HERO ============ */
+  .hero{padding:56px 0 72px;position:relative}
+  .hero .doc-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.3em;color:var(--mute);margin-bottom:34px}
+  .hero h1{font-size:clamp(40px,6vw,84px);font-weight:900;letter-spacing:.06em;line-height:1.2;color:var(--ink)}
+  .hero .sub{margin-top:20px;font-size:clamp(15px,1.8vw,21px);font-weight:700;letter-spacing:.14em;color:var(--ink-2)}
+  .hero .desc{margin-top:26px;font-size:13px;line-height:2.2;color:var(--ink-2);max-width:560px;font-weight:500}
+
+  /* 寸法線（タイトル下） */
+  .dim-under{max-width:640px;margin-top:36px}
+  .dim-line{position:relative;border-top:1.5px solid var(--ink);margin:0 7px}
+  .dim-line::before,.dim-line::after{content:"";position:absolute;top:-4.75px;border-style:solid}
+  .dim-line::before{left:-1px;border-width:4px 9px 4px 0;border-color:transparent var(--ink) transparent transparent}
+  .dim-line::after{right:-1px;border-width:4px 0 4px 9px;border-color:transparent transparent transparent var(--ink)}
+  .dim-wrap{position:relative;padding-top:24px}
+  .dim-wrap .ext{position:absolute;top:0;width:1.5px;height:32px;background:var(--ink)}
+  .dim-wrap .ext.l{left:0}
+  .dim-wrap .ext.r{right:0}
+  .dim-wrap .dim-cap{position:absolute;top:-4px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 14px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;color:var(--ink);white-space:nowrap}
+
+  /* 表題欄（ヒーロー右下） */
+  .titleblock{
+    position:absolute;right:0;bottom:0;width:340px;background:#fff;
+    border:1.5px solid var(--ink);font-size:11px;z-index:5;
+  }
+  .titleblock table{width:100%;border-collapse:collapse}
+  .titleblock th,.titleblock td{border:.75px solid var(--line-2);padding:7px 10px;text-align:left;font-weight:500}
+  .titleblock th{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;color:var(--mute);width:74px;font-weight:500}
+  .titleblock td{color:var(--ink);letter-spacing:.04em}
+  .titleblock .stamp-cell{text-align:center;vertical-align:middle}
+
+  /* 朱印 */
+  .stamp{
+    display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;
+    border:2px solid var(--red);color:var(--red);transform:rotate(-8deg);
+    font-size:13px;font-weight:700;letter-spacing:.1em;line-height:1.3;text-align:center;
+    opacity:.85;
+  }
+  .stamp small{font-size:7.5px;font-weight:500;letter-spacing:.2em;display:block}
+
+  /* 第三角法記号 */
+  .angle-symbol{display:flex;align-items:center;gap:10px;color:var(--mute)}
+
+  /* ============ セクション共通 ============ */
+  section{padding:64px 0;border-top:1.5px solid var(--ink);position:relative}
+  .sec-id{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;flex-wrap:wrap}
+  .sec-id .no{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;color:#fff;background:var(--ink);padding:5px 12px}
+  .sec-id h2{font-size:24px;font-weight:900;letter-spacing:.1em;color:var(--ink)}
+  .sec-id .en{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.26em;color:var(--mute)}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============ SPEC（強み＝仕様表） ============ */
+  .spec-table{width:100%;border-collapse:collapse;background:#fff;border:1.5px solid var(--ink);font-size:13px}
+  .spec-table th,.spec-table td{border:.75px solid var(--line-2);padding:14px 16px;text-align:left;vertical-align:top}
+  .spec-table thead th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.2em;color:var(--mute);font-weight:500;background:rgba(20,50,78,.04)}
+  .spec-table .sym{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--red);width:52px;text-align:center;font-size:14px}
+  .spec-table .item{font-weight:700;color:var(--ink);width:190px;letter-spacing:.04em}
+  .spec-table .val{color:var(--ink-2);font-weight:500;line-height:1.9}
+  .spec-table .note{color:var(--mute);font-size:11.5px;width:200px;font-family:"IBM Plex Mono",monospace;letter-spacing:.02em}
+  .spec-table tbody tr{transition:background .2s}
+  .spec-table tbody tr:hover{background:rgba(20,50,78,.035)}
+
+  /* ============ PROCESS（青焼き反転） ============ */
+  .process{background:var(--cyan);margin:0 -44px;padding:64px 44px;color:#fff;position:relative;overflow:hidden}
+  .process::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:22px 22px}
+  .process .sec-id .no{background:#fff;color:var(--cyan)}
+  .process .sec-id h2{color:#fff}
+  .process .sec-id .en{color:rgba(255,255,255,.5)}
+  .process-flow{display:grid;grid-template-columns:repeat(6,1fr);position:relative;z-index:2}
+  .p-step{position:relative;padding:26px 14px 8px;border-left:.75px dashed rgba(255,255,255,.3)}
+  .p-step:first-child{border-left:0}
+  .p-step .balloon{
+    width:44px;height:44px;border-radius:50%;border:1.5px solid #fff;
+    display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600;
+    background:var(--cyan);position:relative;z-index:2;
+  }
+  .p-step::before{content:"";position:absolute;top:47px;left:0;right:0;height:1px;background:rgba(255,255,255,.35)}
+  .p-step:last-child::before{right:40%}
+  .p-step:first-child::before{left:14px}
+  .p-step h3{margin-top:18px;font-size:14px;font-weight:700;letter-spacing:.06em;line-height:1.6}
+  .p-step h3 small{display:block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,.5);margin-top:3px}
+  .p-step ul{list-style:none;margin-top:12px}
+  .p-step ul li{font-size:11px;color:rgba(255,255,255,.75);line-height:1.9;padding-left:12px;position:relative;font-weight:500}
+  .p-step ul li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:1px;background:rgba(255,255,255,.6)}
+  .process .note-bar{margin-top:40px;border:1px solid rgba(255,255,255,.4);padding:16px 22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;position:relative;z-index:2}
+  .process .note-bar .mono{font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.6)}
+  .process .note-bar p{font-size:14px;font-weight:700;letter-spacing:.08em}
+
+  /* ============ VIEWS（事業＝投影図） ============ */
+  .views{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .view{border:1.5px solid var(--ink);background:#fff;position:relative}
+  .view .v-head{display:flex;justify-content:space-between;align-items:center;border-bottom:.75px solid var(--line-2);padding:10px 16px}
+  .view .v-head .mono{font-size:10px;letter-spacing:.22em;color:var(--ink)}
+  .view .v-head .scale{font-size:9px;color:var(--mute)}
+  .view .v-fig{height:210px;position:relative;margin:18px;border:.75px solid var(--line-2);overflow:hidden}
+  .view .v-fig::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(45deg,rgba(20,50,78,.14) 0 1px,transparent 1px 9px)}
+  .view.alt .v-fig::before{background:repeating-linear-gradient(-45deg,rgba(179,52,46,.14) 0 1px,transparent 1px 9px)}
+  .view .v-fig .center-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--line-2)}
+  .view .v-body{padding:0 18px 20px}
+  .view .v-body h3{font-size:19px;font-weight:900;letter-spacing:.08em;color:var(--ink)}
+  .view .v-body h3 small{font-size:11px;color:var(--mute);font-weight:500;margin-left:10px;letter-spacing:.06em}
+  .view .v-body p{margin-top:10px;font-size:12.5px;line-height:2;color:var(--ink-2);font-weight:500}
+  .view .v-body .ref{display:inline-block;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:2px}
+
+  /* ============ DIMENSIONS（数字＝寸法） ============ */
+  .dims{display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+  .dim-metric{text-align:center}
+  .dim-metric .val{font-family:"IBM Plex Mono",monospace;font-size:56px;font-weight:600;line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .dim-metric .val em{font-style:normal;font-size:16px;font-weight:500;color:var(--red);margin-left:4px;letter-spacing:.1em}
+  .dim-metric .dim-wrap{margin-top:16px}
+  .dim-metric .dim-wrap{padding-top:0;height:14px}
+  .dim-metric .ext{height:20px;top:-6px}
+  .dim-metric .label{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--ink)}
+  .dim-metric .sub{margin-top:4px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;color:var(--mute)}
+
+  /* ============ REVISION（お知らせ＝改訂欄） ============ */
+  .rev-table{width:100%;border-collapse:collapse;background:#fff;border:1.5px solid var(--ink);font-size:12.5px}
+  .rev-table th,.rev-table td{border:.75px solid var(--line-2);padding:12px 16px;text-align:left}
+  .rev-table thead th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.2em;color:var(--mute);font-weight:500;background:rgba(20,50,78,.04)}
+  .rev-table .rev{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--red);width:56px;text-align:center}
+  .rev-table .date{font-family:"IBM Plex Mono",monospace;color:var(--ink-2);width:120px;letter-spacing:.04em}
+  .rev-table .cat{width:110px;font-size:10.5px;color:var(--ink-2);font-weight:700}
+  .rev-table td.desc{color:var(--ink);font-weight:500}
+  .rev-more{display:inline-block;margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:3px;transition:.2s}
+  .rev-more:hover{color:var(--red);border-color:var(--red)}
+
+  /* ============ FOOTER（表題欄） ============ */
+  .foot{border-top:1.5px solid var(--ink);margin:64px -44px 0;background:#fff}
+  .foot table{width:100%;border-collapse:collapse;font-size:11.5px}
+  .foot th,.foot td{border:.75px solid var(--line-2);padding:12px 16px;text-align:left;vertical-align:middle}
+  .foot th{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;color:var(--mute);font-weight:500;width:90px}
+  .foot td{color:var(--ink);font-weight:500;letter-spacing:.03em}
+  .foot .stamp-cell{text-align:center;width:110px}
+  .foot .cp{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--mute);letter-spacing:.12em;text-align:center;padding:14px;border-top:.75px solid var(--line-2)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    .sheet-inner{padding:28px 28px 0}
+    .process{margin:0 -28px;padding:56px 28px}
+    .foot{margin:56px -28px 0}
+    .process-flow{grid-template-columns:repeat(3,1fr);row-gap:30px}
+    .p-step:nth-child(4){border-left:0}
+    .views{grid-template-columns:1fr}
+    .dims{grid-template-columns:repeat(2,1fr)}
+    .titleblock{position:relative;right:auto;bottom:auto;width:100%;max-width:420px;margin-top:40px}
+    .hero{padding-bottom:40px}
+  }
+  @media (max-width:760px){
+    body{padding:8px}
+    .zones{display:none}
+    .sheet-inner{padding:20px 18px 0}
+    .process{margin:0 -18px;padding:48px 18px}
+    .foot{margin:48px -18px 0}
+    .bar{gap:10px;padding:10px 14px}
+    .bar nav{gap:12px}
+    .hero{padding-top:36px}
+    .process-flow{grid-template-columns:1fr;row-gap:8px}
+    .p-step{border-left:0;border-top:.75px dashed rgba(255,255,255,.3);padding:20px 4px 14px}
+    .p-step:first-child{border-top:0}
+    .p-step::before{display:none}
+    .dims{grid-template-columns:1fr;gap:28px}
+    .spec-table .note{display:none}
+    .spec-table th:last-child{display:none}
+    .rev-table .cat{display:none}
+    .rev-table thead th:nth-child(3){display:none}
+    .sec-id h2{font-size:19px}
+    .foot th{width:70px}
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="zones top"><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+  <div class="zones left"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+
+  <div class="sheet-inner">
+
+    <!-- ============ BAR ============ -->
+    <div class="bar">
+      <span class="id"><b>KATSUHARA SEISAKUSHO</b> / DWG No. KS-HP-B</span>
+      <nav>
+        <a href="#spec">01 SPEC</a>
+        <a href="#process">02 PROCESS</a>
+        <a href="#views">03 VIEWS</a>
+        <a href="#dims">04 DIM</a>
+        <a href="#rev">05 REV</a>
+        <a href="#contact">06 CONTACT</a>
+      </nav>
+      <a class="back" href="../">← A案</a> <a class="back" href="../design-c/">C案</a> <a class="back" href="../design-d/">D案</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <p class="doc-label">CORPORATE DRAWING — SHEET 1/1 / THIRD ANGLE PROJECTION</p>
+      <h1>株式会社 勝原製作所</h1>
+      <p class="sub">つくるを超え、カタチにするパートナーへ。</p>
+      <p class="desc">企画・設計から加工・量産・アフターサポートまで、全工程を社内一貫で。昭和8年の創業から90年あまり、鳥取から「提案するものづくり」を続けています。</p>
+
+      <div class="dim-under">
+        <div class="dim-wrap">
+          <b class="ext l"></b><b class="ext r"></b>
+          <div class="dim-line"></div>
+          <span class="dim-cap">SINCE 1933 — PRESENT</span>
+        </div>
+      </div>
+
+      <aside class="titleblock">
+        <table>
+          <tr><th>名称</th><td>コーポレートサイト 意匠案</td><th rowspan="4" style="width:0;padding:0;border:0"></th></tr>
+          <tr><th>図番</th><td class="mono">KS-HP-B (TYPE-B)</td></tr>
+          <tr><th>様式</th><td>ブループリント / 単色製図</td></tr>
+          <tr><th>作成</th><td class="mono">2026.07</td></tr>
+          <tr>
+            <th>尺度</th><td class="mono">N.T.S.</td>
+          </tr>
+          <tr>
+            <th>承認</th>
+            <td class="stamp-cell"><span class="stamp">勝原<small>APPROVED</small></span></td>
+          </tr>
+        </table>
+      </aside>
+    </header>
+
+    <!-- ============ 01 SPEC ============ -->
+    <section id="spec">
+      <div class="sec-id reveal">
+        <span class="no mono">01</span>
+        <h2>仕様 — 当社の強み</h2>
+        <span class="en">SPECIFICATIONS</span>
+      </div>
+      <div style="overflow-x:auto" class="reveal">
+        <table class="spec-table">
+          <thead>
+            <tr><th>SYM</th><th>ITEM — 項目</th><th>SPECIFICATION — 仕様</th><th>REMARKS — 備考</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="sym">A</td><td class="item">提案する技術力</td><td class="val">上流工程から伴走し、課題を価値に変える提案を行う。図面がない構想段階からの相談に対応。</td><td class="note">企画段階からの参画可</td></tr>
+            <tr><td class="sym">B</td><td class="item">一貫生産体制</td><td class="val">企画・設計から量産・アフターサポートまで社内で完結。情報共有・スピード・品質を最大化。</td><td class="note">自社工場 4棟</td></tr>
+            <tr><td class="sym">C</td><td class="item">高い品質と信頼</td><td class="val">ISO 9001 / 14001 認証。三次元測定機による検査、製品単位のトレーサビリティ管理。</td><td class="note">ISO9001 (2003) / 14001 (2005)</td></tr>
+            <tr><td class="sym">D</td><td class="item">挑戦する開発力</td><td class="val">新しい技術・工法に挑戦し、お客様の新製品開発を支援。3D CADによる設計・解析・試作。</td><td class="note">SOLIDWORKS</td></tr>
+            <tr><td class="sym">E</td><td class="item">人を大切にする会社</td><td class="val">安全・働きやすさ・成長を重視し、社員一人ひとりの力を最大化する。</td><td class="note">平均勤続 14年</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ 02 PROCESS（青焼き） ============ -->
+    <section id="process" style="border-top:0;padding:0">
+      <div class="process">
+        <div class="sec-id reveal">
+          <span class="no mono">02</span>
+          <h2>工程 — 勝原のできること</h2>
+          <span class="en">PROCESS FLOW DIAGRAM</span>
+        </div>
+        <div class="process-flow reveal">
+          <div class="p-step"><span class="balloon">1</span><h3>企画・構想<small>CONCEPT</small></h3><ul><li>市場・トレンド調査</li><li>仕様検討・提案</li></ul></div>
+          <div class="p-step"><span class="balloon">2</span><h3>設計・試作<small>DESIGN / 3D CAD</small></h3><ul><li>SOLIDWORKS 設計</li><li>解析・試作・評価</li></ul></div>
+          <div class="p-step"><span class="balloon">3</span><h3>加工<small>MACHINING</small></h3><ul><li>レーザー / プレス / 曲げ</li><li>溶接 / 組立 / 塗装</li></ul></div>
+          <div class="p-step"><span class="balloon">4</span><h3>品質管理<small>QUALITY</small></h3><ul><li>三次元測定機 検査</li><li>トレーサビリティ管理</li></ul></div>
+          <div class="p-step"><span class="balloon">5</span><h3>量産・出荷<small>PRODUCTION</small></h3><ul><li>生産計画・進捗管理</li><li>梱包・出荷・物流</li></ul></div>
+          <div class="p-step"><span class="balloon">6</span><h3>サポート<small>SUPPORT</small></h3><ul><li>保守・改善提案</li><li>リピート・改良開発</li></ul></div>
+        </div>
+        <div class="note-bar reveal">
+          <span class="mono">GENERAL&nbsp;NOTE</span>
+          <p>全工程を社内一貫で完結すること。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 VIEWS（事業） ============ -->
+    <section id="views">
+      <div class="sec-id reveal">
+        <span class="no mono">03</span>
+        <h2>投影図 — 事業内容</h2>
+        <span class="en">PROJECTED VIEWS</span>
+      </div>
+      <div class="views">
+        <div class="view reveal">
+          <div class="v-head"><span class="mono">VIEW A — EXTERIOR</span><span class="scale mono">SCALE 1:1</span></div>
+          <div class="v-fig">
+            <svg class="center-mark" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1"><circle cx="20" cy="20" r="10"/><path d="M20 0v40M0 20h40"/></svg>
+          </div>
+          <div class="v-body">
+            <h3>エクステリア事業<small>企画・設計・製造</small></h3>
+            <p>機能美と耐久性を両立した自社ブランドのエクステリア製品。企画・設計から製造、施工サポートまで一貫対応。</p>
+            <span class="ref">REF → business/#exterior</span>
+          </div>
+        </div>
+        <div class="view alt reveal">
+          <div class="v-head"><span class="mono">VIEW B — CONTRACT MFG</span><span class="scale mono">SCALE 1:1</span></div>
+          <div class="v-fig">
+            <svg class="center-mark" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1"><circle cx="20" cy="20" r="10"/><path d="M20 0v40M0 20h40"/></svg>
+          </div>
+          <div class="v-body">
+            <h3>受託製造事業<small>ODM / OEM / 試作・量産</small></h3>
+            <p>金属加工・板金部品を試作から量産まで。産業機器・医療・自動車など幅広い分野の精密部品を手掛ける。</p>
+            <span class="ref">REF → business/#contract</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 DIMENSIONS（数字） ============ -->
+    <section id="dims">
+      <div class="sec-id reveal">
+        <span class="no mono">04</span>
+        <h2>主要寸法 — 数字で見る</h2>
+        <span class="en">PRINCIPAL DIMENSIONS</span>
+      </div>
+      <div class="dims reveal">
+        <div class="dim-metric">
+          <div class="val">93<em>YRS</em></div>
+          <div class="dim-wrap"><b class="ext l"></b><b class="ext r"></b><div class="dim-line"></div></div>
+          <div class="label">創業からの年数</div>
+          <div class="sub">EST. 1933 (昭和8年)</div>
+        </div>
+        <div class="dim-metric">
+          <div class="val">57<em>名</em></div>
+          <div class="dim-wrap"><b class="ext l"></b><b class="ext r"></b><div class="dim-line"></div></div>
+          <div class="label">従業員数</div>
+          <div class="sub">AS OF 2026</div>
+        </div>
+        <div class="dim-metric">
+          <div class="val">4<em>棟</em></div>
+          <div class="dim-wrap"><b class="ext l"></b><b class="ext r"></b><div class="dim-line"></div></div>
+          <div class="label">自社工場</div>
+          <div class="sub">TOTTORI, JAPAN</div>
+        </div>
+        <div class="dim-metric">
+          <div class="val">2<em>規格</em></div>
+          <div class="dim-wrap"><b class="ext l"></b><b class="ext r"></b><div class="dim-line"></div></div>
+          <div class="label">ISO 認証</div>
+          <div class="sub">ISO 9001 / ISO 14001</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 REVISION（お知らせ） ============ -->
+    <section id="rev">
+      <div class="sec-id reveal">
+        <span class="no mono">05</span>
+        <h2>改訂欄 — お知らせ</h2>
+        <span class="en">REVISION HISTORY</span>
+      </div>
+      <div style="overflow-x:auto" class="reveal">
+        <table class="rev-table">
+          <thead><tr><th>REV</th><th>DATE</th><th>CAT</th><th>DESCRIPTION — 内容</th></tr></thead>
+          <tbody id="revBody">
+            <tr><td class="rev">D</td><td class="date">2026.04.01</td><td class="cat">お知らせ</td><td class="desc">ゴールデンウィーク休業のお知らせ</td></tr>
+            <tr><td class="rev">C</td><td class="date">2025.12.24</td><td class="cat">社内行事</td><td class="desc">交友会によるクリスマスイベントを開催しました</td></tr>
+            <tr><td class="rev">B</td><td class="date">2025.12.01</td><td class="cat">お知らせ</td><td class="desc">第4工場（板金工場）竣工のお知らせ</td></tr>
+            <tr><td class="rev">A</td><td class="date">2025.10.15</td><td class="cat">リクルート</td><td class="desc">採用情報を更新しました</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <a class="rev-more" href="../news/">FULL HISTORY → お知らせ一覧</a>
+    </section>
+
+    <!-- ============ 06 FOOTER（表題欄） ============ -->
+    <footer class="foot" id="contact">
+      <table>
+        <tr>
+          <th>会社名</th><td>株式会社 勝原製作所<br><span class="mono" style="font-size:9.5px;color:var(--mute)">KATSUHARA SEISAKUSHO CO., LTD.</span></td>
+          <th>所在地</th><td>〒689-1121 鳥取県鳥取市南栄町２番地</td>
+          <td class="stamp-cell" rowspan="2"><span class="stamp">勝原<small>APPROVED</small></span></td>
+        </tr>
+        <tr>
+          <th>TEL</th><td class="mono">0857-53-3381</td>
+          <th>FAX</th><td class="mono">0857-53-4538</td>
+        </tr>
+        <tr>
+          <th>受付</th><td>8:20〜17:10（土日祝除く）</td>
+          <th>認証</th><td class="mono">ISO 9001 / ISO 14001</td>
+          <td style="text-align:center"><a href="../contact/" class="mono" style="font-size:10px;letter-spacing:.16em;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:2px">CONTACT →</a></td>
+        </tr>
+      </table>
+      <div class="cp">© KATSUHARA SEISAKUSHO CO., LTD. — DESIGN PROPOSAL TYPE-B (BLUEPRINT) / THIS SHEET IS A DESIGN MOCKUP.</div>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 改訂欄: WordPress REST API から最新4件を取得（失敗時は静的表示のまま）
+  fetch('https://www.katsuhara.co.jp/wp-json/wp/v2/posts?per_page=4&_embed')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(posts => {
+      if (!Array.isArray(posts) || !posts.length) return;
+      const revs = ['D','C','B','A'];
+      const dec = h => { const t = document.createElement('textarea'); t.innerHTML = h; return t.value; };
+      const fmt = iso => { const d = new Date(iso), p = n => String(n).padStart(2,'0'); return `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())}`; };
+      document.getElementById('revBody').innerHTML = posts.map((p,i) => {
+        let cat = 'お知らせ';
+        try { cat = p._embedded['wp:term'][0][0].name; } catch(e){}
+        return `<tr><td class="rev">${revs[i]||'-'}</td><td class="date">${fmt(p.date)}</td><td class="cat">${cat}</td><td class="desc"><a href="${p.link}" target="_blank" rel="noopener">${dec(p.title.rendered)}</a></td></tr>`;
+      }).join('');
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>

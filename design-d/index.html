@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DESIGN PROPOSAL TYPE-D | 株式会社 勝原製作所</title>
+<meta name="description" content="勝原製作所コーポレートサイト デザイン提案D案（クリエイティブ・ボールド）">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Outfit:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F3F6F9;      /* 淡いブルーグレーの紙 */
+    --ink:#10203A;        /* 紺（ネイビー） */
+    --accent:#1D5DF5;     /* 青（ビビッドブルー） */
+    --sky:#A9D9F5;        /* 水色 */
+    --mute:#8792A1;
+    --hair:#D5DCE4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Zen Kaku Gothic New",sans-serif;
+    -webkit-font-smoothing:antialiased;font-feature-settings:"palt" 1;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .anton{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase}
+  .out{font-family:"Outfit",sans-serif}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+
+  /* ============ HEADER ============ */
+  header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:2px solid var(--ink)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+  .brand{font-family:"Anton",sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+  .brand sup{font-size:10px;color:var(--accent);vertical-align:super}
+  nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+  nav a{font-size:12px;font-weight:700;letter-spacing:.12em;position:relative;padding:4px 0}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent);transition:width .25s}
+  nav a:hover::after{width:100%}
+  .switcher{font-family:"Outfit",sans-serif;font-size:10px;letter-spacing:.18em;color:var(--mute)}
+  .switcher a{border-bottom:1px solid transparent;padding-bottom:1px}
+  .switcher a:hover{color:var(--ink);border-color:var(--ink)}
+  .switcher b{color:var(--accent);font-weight:600}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;padding:90px 0 70px}
+  .hero .meta{display:flex;gap:26px;flex-wrap:wrap;font-family:"Outfit",sans-serif;font-size:11px;letter-spacing:.28em;color:var(--mute);margin-bottom:34px;text-transform:uppercase}
+  .hero .meta b{color:var(--ink);font-weight:600}
+  .hero h1{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(64px,13.5vw,190px);line-height:.92;letter-spacing:.01em;color:var(--ink)}
+  .hero h1 .line{display:block}
+  .hero h1 .stroke{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+  .hero h1 .fill{color:var(--accent)}
+  .hero .ja-copy{margin-top:40px;font-size:clamp(16px,2.2vw,24px);font-weight:900;letter-spacing:.16em;line-height:2}
+  .hero .ja-copy .marker{background:linear-gradient(transparent 62%,rgba(169,217,245,.6) 62%)}
+  .hero .lead{margin-top:18px;font-size:13px;font-weight:500;line-height:2.3;letter-spacing:.08em;color:#44536B;max-width:560px}
+
+  /* 回転スタンプバッジ */
+  .stamp{position:absolute;right:48px;top:110px;width:150px;height:150px;pointer-events:none}
+  .stamp svg{width:100%;height:100%;animation:spin 16s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .stamp text{font-family:"Outfit",sans-serif;font-size:10.5px;letter-spacing:.32em;fill:var(--ink);text-transform:uppercase}
+  .stamp .core{position:absolute;inset:0;display:grid;place-items:center}
+  .stamp .core span{font-family:"Anton",sans-serif;font-size:34px;color:var(--accent)}
+
+  /* ============ MARQUEE ============ */
+  .marquee{background:var(--accent);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);overflow:hidden;padding:14px 0}
+  .marquee .track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;width:max-content}
+  .marquee span{font-family:"Anton",sans-serif;font-size:26px;color:var(--paper);letter-spacing:.06em;text-transform:uppercase;padding-right:56px}
+  .marquee span i{font-style:normal;color:var(--sky)}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* ============ PHOTO STRIP（デュオトーン） ============ */
+  .strip{padding:90px 0 0}
+  .strip .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px;align-items:end}
+  .duo{position:relative;background:var(--accent);border:2px solid var(--ink);overflow:hidden}
+  .duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.08);mix-blend-mode:multiply;opacity:.92;transition:filter .5s ease,mix-blend-mode .5s ease,opacity .5s ease}
+  .duo:hover img{filter:none;mix-blend-mode:normal;opacity:1}
+  .duo .tag{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--paper);font-family:"Outfit",sans-serif;font-size:10px;letter-spacing:.24em;padding:8px 14px;z-index:2;text-transform:uppercase}
+  .strip .grid .duo:nth-child(1){height:440px}
+  .strip .grid .duo:nth-child(2){height:330px}
+  .strip .grid .duo:nth-child(3){height:380px;transform:translateY(-34px)}
+  .strip .cap{margin-top:16px;font-family:"Outfit",sans-serif;font-size:10px;letter-spacing:.3em;color:var(--mute);text-align:right;text-transform:uppercase}
+
+  /* ============ STATEMENT ============ */
+  .statement{padding:130px 0}
+  .statement .idx{font-family:"Anton",sans-serif;font-size:14px;color:var(--accent);letter-spacing:.14em;margin-bottom:26px}
+  .statement p{font-size:clamp(22px,3.4vw,40px);font-weight:900;line-height:1.9;letter-spacing:.08em}
+  .statement p .thin{font-weight:400;color:#4A5A74}
+  .statement p .marker{background:linear-gradient(transparent 60%,rgba(169,217,245,.6) 60%)}
+
+  /* ============ SECTION HEAD ============ */
+  .d-head{display:flex;align-items:baseline;gap:22px;border-top:2px solid var(--ink);padding-top:20px;margin-bottom:54px;flex-wrap:wrap}
+  .d-head .no{font-family:"Anton",sans-serif;font-size:15px;color:var(--accent);letter-spacing:.1em}
+  .d-head h2{font-family:"Anton",sans-serif;font-size:clamp(34px,5vw,58px);letter-spacing:.02em;text-transform:uppercase;line-height:1}
+  .d-head .ja{margin-left:auto;font-size:13px;font-weight:700;letter-spacing:.3em;color:var(--mute)}
+
+  /* ============ PROCESS（巨大リスト） ============ */
+  .process{padding:40px 0 120px}
+  .p-row{display:grid;grid-template-columns:150px 1fr auto;gap:28px;align-items:center;
+    border-bottom:2px solid var(--ink);padding:30px 10px;transition:background .25s,color .25s;cursor:default}
+  .p-row:first-of-type{border-top:2px solid var(--ink)}
+  .p-row .num{font-family:"Anton",sans-serif;font-size:clamp(40px,5.5vw,72px);line-height:1;color:transparent;-webkit-text-stroke:1.8px var(--ink);transition:.25s}
+  .p-row h3{font-size:clamp(20px,2.6vw,30px);font-weight:900;letter-spacing:.12em}
+  .p-row h3 small{display:block;font-family:"Outfit",sans-serif;font-weight:500;font-size:11px;letter-spacing:.3em;color:var(--mute);margin-top:6px;text-transform:uppercase;transition:.25s}
+  .p-row .desc{font-size:12px;font-weight:500;letter-spacing:.06em;color:#4A5A74;max-width:300px;line-height:2;transition:.25s}
+  .p-row:hover{background:var(--ink);color:var(--paper)}
+  .p-row:hover .num{-webkit-text-stroke:1.8px var(--accent)}
+  .p-row:hover h3 small,.p-row:hover .desc{color:#A9BAD3}
+  .p-note{margin-top:34px;display:inline-block;background:var(--accent);color:var(--paper);font-weight:900;font-size:15px;letter-spacing:.2em;padding:14px 26px;transform:rotate(-1.2deg)}
+
+  /* ============ BUSINESS ============ */
+  .biz{padding:0 0 130px}
+  .biz .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .b-card{border:2px solid var(--ink);background:#fff;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s}
+  .b-card:hover{box-shadow:10px 10px 0 var(--accent);transform:translate(-3px,-3px)}
+  .b-card .ph{height:280px}
+  .b-card .ph.duo{border:0;border-bottom:2px solid var(--ink)}
+  .b-card .body{padding:30px 30px 34px}
+  .b-card .en-ttl{font-family:"Anton",sans-serif;font-size:clamp(30px,3.6vw,46px);line-height:1;letter-spacing:.02em;text-transform:uppercase}
+  .b-card .en-ttl span{color:transparent;-webkit-text-stroke:1.6px var(--ink)}
+  .b-card h3{margin-top:12px;font-size:17px;font-weight:900;letter-spacing:.2em}
+  .b-card p{margin-top:14px;font-size:12.5px;font-weight:500;line-height:2.1;letter-spacing:.05em;color:#44536B}
+  .b-card .go{margin-top:20px;font-family:"Outfit",sans-serif;font-size:11px;font-weight:600;letter-spacing:.26em;color:var(--accent);text-transform:uppercase}
+
+  /* ============ NUMBERS ============ */
+  .nums{background:var(--ink);color:var(--paper);border-top:2px solid var(--ink);padding:110px 0}
+  .nums .d-head{border-top-color:var(--paper)}
+  .nums .d-head h2{color:var(--paper)}
+  .nums .d-head .ja{color:#8b8f93}
+  .nums .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .n-item{border-left:3px solid var(--accent);padding-left:22px}
+  .n-item .v{font-family:"Anton",sans-serif;font-size:clamp(52px,6.5vw,92px);line-height:.95;letter-spacing:.01em}
+  .n-item .v small{font-size:26px;color:var(--accent);margin-left:4px}
+  .n-item .k{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.24em}
+  .n-item .e{margin-top:4px;font-family:"Outfit",sans-serif;font-size:9.5px;letter-spacing:.24em;color:#8b8f93;text-transform:uppercase}
+
+  /* ============ NEWS ============ */
+  .news{padding:120px 0}
+  .n-row{display:grid;grid-template-columns:150px 110px 1fr auto;gap:22px;align-items:center;border-bottom:1.5px solid var(--ink);padding:22px 8px;transition:background .2s}
+  .n-row:first-of-type{border-top:2px solid var(--ink)}
+  .n-row:hover{background:#fff}
+  .n-row .d{font-family:"Anton",sans-serif;font-size:15px;letter-spacing:.06em}
+  .n-row .c{font-family:"Outfit",sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.2em;color:var(--accent);border:1.5px solid var(--accent);text-align:center;padding:4px 6px;text-transform:uppercase}
+  .n-row .t{font-size:13.5px;font-weight:700;letter-spacing:.06em}
+  .n-row .a{font-family:"Anton",sans-serif;font-size:16px;color:var(--accent)}
+  .n-more{display:inline-block;margin-top:30px;font-family:"Outfit",sans-serif;font-size:11px;font-weight:600;letter-spacing:.26em;border-bottom:2px solid var(--ink);padding-bottom:4px;text-transform:uppercase;transition:.2s}
+  .n-more:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ============ CTA ============ */
+  .cta{background:var(--accent);border-top:2px solid var(--ink);padding:110px 0;position:relative;overflow:hidden}
+  .cta h2{font-family:"Anton",sans-serif;font-size:clamp(46px,9vw,130px);line-height:.95;color:var(--paper);text-transform:uppercase;letter-spacing:.01em}
+  .cta h2 .stroke{color:transparent;-webkit-text-stroke:2px var(--paper)}
+  .cta p{margin-top:26px;font-size:14px;font-weight:700;letter-spacing:.14em;color:#0A1C3A}
+  .cta .btn{display:inline-flex;align-items:center;gap:14px;margin-top:36px;background:var(--ink);color:var(--paper);
+    font-weight:900;font-size:14px;letter-spacing:.2em;padding:20px 40px;transition:.2s;border:2px solid var(--ink)}
+  .cta .btn:hover{background:var(--paper);color:var(--ink)}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink);color:var(--paper);padding:70px 0 40px}
+  footer .top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+  footer .f-brand{font-family:"Anton",sans-serif;font-size:30px;letter-spacing:.03em;text-transform:uppercase}
+  footer .f-brand sup{font-size:11px;color:var(--accent)}
+  footer .addr{margin-top:16px;font-size:11.5px;font-weight:500;letter-spacing:.1em;line-height:2.2;color:#b9bdc1}
+  footer .f-links{display:flex;gap:22px;flex-wrap:wrap}
+  footer .f-links a{font-size:11px;font-weight:700;letter-spacing:.18em;border-bottom:2px solid transparent;padding-bottom:3px;transition:.2s}
+  footer .f-links a:hover{border-color:var(--accent);color:#fff}
+  footer .cp{margin-top:50px;padding-top:22px;border-top:1px solid #33383c;font-family:"Outfit",sans-serif;font-size:9.5px;letter-spacing:.22em;color:#7d8286;text-transform:uppercase;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer .cp .sw a{color:#7d8286}
+  footer .cp .sw a:hover{color:var(--paper)}
+  footer .cp .sw b{color:var(--accent)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    .wrap{padding:0 26px}
+    .stamp{width:110px;height:110px;right:26px;top:96px}
+    .stamp .core span{font-size:24px}
+    .strip .grid{grid-template-columns:1fr 1fr}
+    .strip .grid .duo:nth-child(1){grid-column:1/-1;height:340px}
+    .strip .grid .duo:nth-child(3){transform:none;height:300px}
+    .strip .grid .duo:nth-child(2){height:300px}
+    .nums .grid{grid-template-columns:1fr 1fr;gap:40px 26px}
+    .biz .cols{grid-template-columns:1fr}
+    .p-row{grid-template-columns:90px 1fr;gap:16px}
+    .p-row .desc{grid-column:2;max-width:none}
+  }
+  @media (max-width:640px){
+    header .wrap{gap:10px}
+    nav{gap:14px}
+    nav a{font-size:11px}
+    .hero{padding:60px 0 50px}
+    .hero .meta{gap:14px;font-size:9.5px}
+    .stamp{display:none}
+    .marquee span{font-size:19px}
+    .statement{padding:90px 0}
+    .n-row{grid-template-columns:1fr auto;gap:8px 12px;padding:16px 4px}
+    .n-row .d{order:1}
+    .n-row .a{order:2}
+    .n-row .c{display:none}
+    .n-row .t{order:3;grid-column:1/-1}
+    .nums{padding:80px 0}
+    .nums .grid{grid-template-columns:1fr;gap:34px}
+    .news{padding:90px 0}
+    .cta{padding:80px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Katsuhara<sup>®</sup></a>
+    <nav>
+      <a href="#process">できること</a>
+      <a href="#business">事業</a>
+      <a href="#numbers">数字</a>
+      <a href="#news">お知らせ</a>
+      <a href="../contact/" style="color:var(--accent)">お問い合わせ</a>
+    </nav>
+    <div class="switcher">PROPOSAL&nbsp;&nbsp;<a href="../">A</a> / <a href="../design-b/">B</a> / <a href="../design-c/">C</a> / <b>D</b></div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="meta reveal"><b>Since 1933</b><span>Tottori, Japan</span><span>Metal Fabrication</span><span>Design & Manufacturing</span></p>
+    <h1 class="reveal">
+      <span class="line">Make</span>
+      <span class="line stroke">Real</span>
+      <span class="line"><span class="fill">Things.</span></span>
+    </h1>
+    <p class="ja-copy reveal">つくるを超え、<span class="marker">カタチにする</span>パートナーへ。</p>
+    <p class="lead reveal">企画・設計から加工・量産・アフターサポートまで、全工程を社内一貫で。昭和8年創業、鳥取の金属加工メーカー・勝原製作所は、「提案するものづくり」でデザインを現実にします。</p>
+  </div>
+  <div class="stamp" aria-hidden="true">
+    <svg viewBox="0 0 150 150">
+      <defs><path id="circ" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
+      <text><textPath href="#circ">KATSUHARA SEISAKUSHO • DESIGN &amp; MANUFACTURING • EST.1933 • </textPath></text>
+    </svg>
+    <div class="core"><span>K</span></div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Design <i>×</i> Manufacturing — Katsuhara Seisakusho — Est.1933 — Tottori Japan — </span>
+    <span>Design <i>×</i> Manufacturing — Katsuhara Seisakusho — Est.1933 — Tottori Japan — </span>
+  </div>
+</div>
+
+<!-- ============ PHOTO STRIP ============ -->
+<section class="strip">
+  <div class="wrap">
+    <div class="grid reveal">
+      <div class="duo"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=80" alt="工場ライン"><span class="tag">Factory Floor</span></div>
+      <div class="duo"><img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=900&q=80" alt="金属加工"><span class="tag">Machining</span></div>
+      <div class="duo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="エクステリア"><span class="tag">Exterior</span></div>
+    </div>
+    <p class="cap">Hover to reveal — 触れると色が現れます</p>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="statement">
+  <div class="wrap reveal">
+    <p class="idx anton">— Statement</p>
+    <p>
+      <span class="thin">図面のないアイデアも、</span><br/>
+      <span class="marker">工場は、カタチにできる。</span><br/>
+      <span class="thin">わたしたちは鳥取の</span>クリエイティブ・ファクトリー。
+    </p>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="d-head reveal">
+      <span class="no">01</span>
+      <h2>What We Do</h2>
+      <span class="ja">勝原のできること</span>
+    </div>
+    <div class="reveal">
+      <div class="p-row"><span class="num">01</span><h3>企画・構想<small>Concept</small></h3><p class="desc">市場調査、コンセプト立案、仕様のご提案。図面ゼロから伴走します。</p></div>
+      <div class="p-row"><span class="num">02</span><h3>設計・試作<small>Design / 3D CAD</small></h3><p class="desc">SOLIDWORKSによる設計・解析・試作評価。</p></div>
+      <div class="p-row"><span class="num">03</span><h3>加工<small>Machining</small></h3><p class="desc">レーザー、プレス、曲げ、溶接、組立、塗装。</p></div>
+      <div class="p-row"><span class="num">04</span><h3>品質管理<small>Quality</small></h3><p class="desc">三次元測定機による検査、トレーサビリティ管理。</p></div>
+      <div class="p-row"><span class="num">05</span><h3>量産・出荷<small>Production</small></h3><p class="desc">生産計画・進捗管理、梱包・出荷・物流。</p></div>
+      <div class="p-row"><span class="num">06</span><h3>アフターサポート<small>Support</small></h3><p class="desc">保守、改善提案、リピート・改良開発。</p></div>
+    </div>
+    <span class="p-note reveal">全工程、社内一貫。</span>
+  </div>
+</section>
+
+<!-- ============ BUSINESS ============ -->
+<section class="biz" id="business">
+  <div class="wrap">
+    <div class="d-head reveal">
+      <span class="no">02</span>
+      <h2>Business</h2>
+      <span class="ja">事業内容</span>
+    </div>
+    <div class="cols">
+      <a class="b-card reveal" href="../business/#exterior">
+        <div class="ph duo"><img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=1200&q=80" alt="エクステリア"></div>
+        <div class="body">
+          <p class="en-ttl">Ex<span>terior</span></p>
+          <h3>エクステリア事業</h3>
+          <p>機能美と耐久性を両立した自社ブランドのエクステリア製品。企画・設計から製造・施工サポートまで一貫対応。</p>
+          <span class="go">View More →</span>
+        </div>
+      </a>
+      <a class="b-card reveal" href="../business/#contract">
+        <div class="ph duo"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80" alt="受託製造"></div>
+        <div class="body">
+          <p class="en-ttl">Con<span>tract</span></p>
+          <h3>受託製造事業</h3>
+          <p>金属加工・板金部品を試作から量産まで。産業機器・医療・自動車など、分野を超えて精度で応える。</p>
+          <span class="go">View More →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="nums" id="numbers">
+  <div class="wrap">
+    <div class="d-head reveal">
+      <span class="no">03</span>
+      <h2>Numbers</h2>
+      <span class="ja">数字で見る</span>
+    </div>
+    <div class="grid reveal">
+      <div class="n-item"><div class="v">1933</div><div class="k">創業（昭和8年）</div><div class="e">Established</div></div>
+      <div class="n-item"><div class="v">57<small>名</small></div><div class="k">従業員数</div><div class="e">Employees</div></div>
+      <div class="n-item"><div class="v">4<small>棟</small></div><div class="k">自社工場</div><div class="e">Factories</div></div>
+      <div class="n-item"><div class="v">ISO<small>×2</small></div><div class="k">9001 / 14001 認証</div><div class="e">Certified</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="d-head reveal">
+      <span class="no">04</span>
+      <h2>News</h2>
+      <span class="ja">お知らせ</span>
+    </div>
+    <div class="reveal" id="newsList">
+      <div class="n-row"><span class="d">2026.04.01</span><span class="c">Info</span><span class="t">ゴールデンウィーク休業のお知らせ</span><span class="a">→</span></div>
+      <div class="n-row"><span class="d">2025.12.24</span><span class="c">Event</span><span class="t">交友会によるクリスマスイベントを開催しました</span><span class="a">→</span></div>
+      <div class="n-row"><span class="d">2025.12.01</span><span class="c">Info</span><span class="t">第4工場（板金工場）竣工のお知らせ</span><span class="a">→</span></div>
+      <div class="n-row"><span class="d">2025.10.15</span><span class="c">Recruit</span><span class="t">採用情報を更新しました</span><span class="a">→</span></div>
+    </div>
+    <a class="n-more" href="../news/">All News</a>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Let's Make<br/><span class="stroke">It Real.</span></h2>
+    <p>「これって作れる？」のひと言から。図面がなくても大丈夫です。</p>
+    <a class="btn" href="../contact/">お問い合わせ <span>→</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <p class="f-brand">Katsuhara<sup>®</sup></p>
+        <p class="addr">株式会社 勝原製作所<br/>〒689-1121 鳥取県鳥取市南栄町２番地<br/>TEL 0857-53-3381（受付 8:20〜17:10 土日祝除く）</p>
+      </div>
+      <div class="f-links">
+        <a href="../company/">会社案内</a>
+        <a href="../recruit/">採用情報</a>
+        <a href="../works/">実績・事例</a>
+        <a href="../contact/">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="cp">
+      <span>© Katsuhara Seisakusho Co., Ltd. — Design Proposal Type-D (Creative Bold)</span>
+      <span class="sw">Proposal&nbsp;&nbsp;<a href="../">A</a> / <a href="../design-b/">B</a> / <a href="../design-c/">C</a> / <b>D</b></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // お知らせ: WordPress REST API から最新4件（失敗時は静的表示のまま）
+  fetch('https://www.katsuhara.co.jp/wp-json/wp/v2/posts?per_page=4&_embed')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(posts => {
+      if (!Array.isArray(posts) || !posts.length) return;
+      const dec = h => { const t = document.createElement('textarea'); t.innerHTML = h; return t.value; };
+      const fmt = iso => { const d = new Date(iso), p = n => String(n).padStart(2,'0'); return `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())}`; };
+      document.getElementById('newsList').innerHTML = posts.map(p => {
+        let cat = 'Info';
+        try { cat = p._embedded['wp:term'][0][0].name; } catch(e){}
+        return `<a class="n-row" href="${p.link}" target="_blank" rel="noopener"><span class="d">${fmt(p.date)}</span><span class="c">${cat}</span><span class="t">${dec(p.title.rendered)}</span><span class="a">→</span></a>`;
+      }).join('');
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
