@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>DESIGN PROPOSAL TYPE-C | 株式会社 勝原製作所</title>
-<meta name="description" content="勝原製作所コーポレートサイト デザイン提案C案（ミニマル・クラフト）">
+<title>DESIGN PROPOSAL TYPE-E | 株式会社 勝原製作所</title>
+<meta name="description" content="勝原製作所コーポレートサイト デザイン提案E案（C×D折衷：静かなのに、要所で大胆）">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500&family=Outfit:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Outfit:wght@300;400;500&display=swap">
 <style>
   :root{
-    --ink:#1F1F1D;
-    --ink-2:#55554F;
-    --mute:#9B9B93;
-    --paper:#FBFAF7;
-    --hair:#E4E3DC;
+    --paper:#F7F9FB;      /* 静かな青白 */
+    --ink:#10203A;        /* 紺 */
+    --ink-2:#44536B;
+    --accent:#1D5DF5;     /* 青（要所のみ） */
+    --sky:#A9D9F5;        /* 水色（マーカー） */
+    --mute:#8B96A5;
+    --hair:#DDE4EA;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -23,103 +25,122 @@
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
   .en{font-family:"Outfit",sans-serif;font-weight:300}
+  .anton{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase}
 
   .wrap{max-width:1120px;margin:0 auto;padding:0 40px}
   .narrow{max-width:720px;margin:0 auto;padding:0 40px}
 
-  /* ============ HEADER ============ */
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity 1.1s ease,transform 1.1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============ HEADER（C: 静か） ============ */
   header{padding:36px 0}
   header .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .brand{font-size:13px;font-weight:500;letter-spacing:.42em;color:var(--ink)}
   .brand small{display:block;font-family:"Outfit",sans-serif;font-weight:300;font-size:8.5px;letter-spacing:.34em;color:var(--mute);margin-top:6px}
   nav{display:flex;gap:26px;flex-wrap:wrap}
   nav a{font-size:11px;letter-spacing:.22em;color:var(--ink-2);transition:color .4s}
-  nav a:hover{color:var(--ink)}
+  nav a:hover{color:var(--accent)}
   .switcher{font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.2em;color:var(--mute)}
   .switcher a{color:var(--mute);border-bottom:1px solid transparent;padding-bottom:1px;transition:.3s}
   .switcher a:hover{color:var(--ink);border-color:var(--ink)}
-  .switcher b{color:var(--ink);font-weight:400}
+  .switcher b{color:var(--accent);font-weight:400}
 
-  /* ============ HERO ============ */
-  .hero{padding:150px 0 110px;text-align:center}
-  .hero .loc{font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.5em;color:var(--mute);margin-bottom:56px}
-  .hero h1{font-size:clamp(22px,3.4vw,34px);font-weight:400;letter-spacing:.3em;line-height:2.2;color:var(--ink);text-indent:.3em}
-  .hero .rule{width:1px;height:72px;background:var(--ink);margin:64px auto 0;opacity:.4}
+  /* ============ HERO（D注入: 特大タイポ1発） ============ */
+  .hero{padding:120px 0 90px;text-align:center}
+  .hero .loc{font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.5em;color:var(--mute);margin-bottom:52px}
+  .hero h1{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(52px,10.5vw,150px);line-height:.95;letter-spacing:.01em;color:var(--ink)}
+  .hero h1 .blue{color:var(--accent)}
+  .hero .ja{margin-top:44px;font-size:clamp(14px,1.8vw,19px);font-weight:500;letter-spacing:.26em;color:var(--ink-2)}
+  .hero .rule{width:1px;height:64px;background:var(--ink);margin:56px auto 0;opacity:.35}
 
-  .reveal{opacity:0;transform:translateY(12px);transition:opacity 1.1s ease,transform 1.1s ease}
-  .reveal.in{opacity:1;transform:none}
-
-  /* ============ PHOTO ============ */
+  /* ============ PHOTO（D注入: 青デュオトーン） ============ */
   .full-photo{max-width:1280px;margin:0 auto;padding:0 40px}
-  .full-photo img{width:100%;height:68vh;min-height:380px;object-fit:cover;filter:grayscale(22%) contrast(.96)}
-  .full-photo figcaption{margin-top:14px;font-family:"Outfit",sans-serif;font-weight:300;font-size:9.5px;letter-spacing:.3em;color:var(--mute);text-align:right}
+  .duo{position:relative;background:var(--accent);overflow:hidden}
+  .duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05);mix-blend-mode:multiply;opacity:.92;transition:filter .6s ease,mix-blend-mode .6s ease,opacity .6s ease}
+  .duo:hover img{filter:none;mix-blend-mode:normal;opacity:1}
+  .full-photo .duo{height:62vh;min-height:360px}
+  .full-photo figcaption{margin-top:14px;font-family:"Outfit",sans-serif;font-weight:300;font-size:9.5px;letter-spacing:.3em;color:var(--mute);text-align:right;text-transform:uppercase}
 
-  /* ============ FACTS ============ */
-  .facts{margin:130px 0 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+  /* ============ FACTS（C: 細罫線） ============ */
+  .facts{margin:120px 0 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
   .facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
   .fact{padding:36px 10px;text-align:center;border-left:1px solid var(--hair)}
   .fact:first-child{border-left:0}
-  .fact .v{font-family:"Outfit",sans-serif;font-weight:300;font-size:30px;color:var(--ink);letter-spacing:.05em}
-  .fact .v small{font-size:12px;letter-spacing:.1em;color:var(--ink-2);margin-left:4px}
+  .fact .v{font-family:"Outfit",sans-serif;font-weight:300;font-size:32px;color:var(--ink);letter-spacing:.05em}
+  .fact .v small{font-size:12px;letter-spacing:.1em;color:var(--accent);margin-left:4px}
   .fact .k{margin-top:10px;font-size:10.5px;letter-spacing:.3em;color:var(--mute)}
 
-  /* ============ STATEMENT ============ */
-  .statement{padding:150px 0}
-  .statement .label{font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.44em;color:var(--mute);text-align:center;margin-bottom:48px}
-  .statement p{font-size:15px;font-weight:400;letter-spacing:.14em;line-height:3;color:var(--ink-2);text-align:center}
+  /* ============ STATEMENT（C + 水色マーカー） ============ */
+  .statement{padding:140px 0}
+  .statement .label{font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.44em;color:var(--mute);text-align:center;margin-bottom:46px;text-transform:uppercase}
+  .statement p{font-size:15.5px;font-weight:400;letter-spacing:.14em;line-height:3;color:var(--ink-2);text-align:center}
   .statement p b{color:var(--ink);font-weight:500}
+  .statement p .marker{background:linear-gradient(transparent 62%,rgba(169,217,245,.55) 62%)}
 
-  /* ============ SECTION COMMON ============ */
-  .sec-label{display:flex;align-items:baseline;gap:20px;margin-bottom:64px}
-  .sec-label .no{font-family:"Outfit",sans-serif;font-weight:300;font-size:11px;letter-spacing:.2em;color:var(--mute)}
+  /* ============ SECTION LABEL（C） ============ */
+  .sec-label{display:flex;align-items:baseline;gap:20px;margin-bottom:60px}
+  .sec-label .no{font-family:"Outfit",sans-serif;font-weight:300;font-size:11px;letter-spacing:.2em;color:var(--accent)}
   .sec-label h2{font-size:16px;font-weight:500;letter-spacing:.32em;color:var(--ink)}
   .sec-label .line{flex:1;height:1px;background:var(--hair)}
+  .sec-label .en-tag{font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
 
-  /* ============ BUSINESS ============ */
-  .biz{padding:40px 0 60px}
+  /* ============ BUSINESS（C構成 × デュオトーン写真） ============ */
+  .biz{padding:30px 0 60px}
   .biz-item{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end;padding:60px 0}
   .biz-item + .biz-item{border-top:1px solid var(--hair)}
   .biz-item.rev .ph{order:2}
-  .biz-item .ph img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(22%) contrast(.96)}
-  .biz-item .txt .en-label{font-family:"Outfit",sans-serif;font-weight:300;font-size:9.5px;letter-spacing:.4em;color:var(--mute);margin-bottom:22px}
+  .biz-item .ph .duo{aspect-ratio:4/3}
+  .biz-item .txt .en-label{font-family:"Outfit",sans-serif;font-weight:300;font-size:9.5px;letter-spacing:.4em;color:var(--mute);margin-bottom:22px;text-transform:uppercase}
   .biz-item .txt h3{font-size:20px;font-weight:500;letter-spacing:.2em;color:var(--ink);margin-bottom:20px}
   .biz-item .txt p{font-size:12.5px;line-height:2.6;letter-spacing:.08em;color:var(--ink-2);max-width:400px}
-  .biz-item .txt .more{display:inline-block;margin-top:30px;font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.3em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:opacity .3s}
-  .biz-item .txt .more:hover{opacity:.5}
+  .biz-item .txt .more{display:inline-block;margin-top:30px;font-family:"Outfit",sans-serif;font-weight:400;font-size:10px;letter-spacing:.3em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:.3s}
+  .biz-item .txt .more:hover{color:var(--accent);border-color:var(--accent)}
 
-  /* ============ PROCESS ============ */
-  .process{padding:110px 0 150px}
+  /* ============ PROCESS（C: 細罫リスト、番号だけ青） ============ */
+  .process{padding:110px 0 140px}
   .p-list{border-top:1px solid var(--hair)}
-  .p-row{display:grid;grid-template-columns:90px 240px 1fr;gap:30px;align-items:baseline;padding:30px 6px;border-bottom:1px solid var(--hair);transition:background .4s}
-  .p-row:hover{background:rgba(31,31,29,.02)}
-  .p-row .no{font-family:"Outfit",sans-serif;font-weight:300;font-size:12px;letter-spacing:.24em;color:var(--mute)}
+  .p-row{display:grid;grid-template-columns:110px 250px 1fr;gap:30px;align-items:baseline;padding:32px 6px;border-bottom:1px solid var(--hair);transition:background .4s}
+  .p-row:hover{background:rgba(169,217,245,.12)}
+  .p-row .no{font-family:"Outfit",sans-serif;font-weight:300;font-size:26px;letter-spacing:.1em;color:var(--accent)}
   .p-row h3{font-size:14px;font-weight:500;letter-spacing:.22em;color:var(--ink)}
   .p-row p{font-size:11.5px;letter-spacing:.1em;color:var(--mute);line-height:2}
   .p-note{margin-top:44px;text-align:center;font-size:12px;letter-spacing:.3em;color:var(--ink-2)}
 
-  /* ============ NEWS ============ */
-  .news{padding:0 0 150px}
+  /* ============ RECRUIT（D注入: 紺の大胆ブロック） ============ */
+  .recruit{background:var(--ink);color:var(--paper);padding:130px 0;text-align:center;position:relative;overflow:hidden}
+  .recruit .join{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(60px,11vw,150px);line-height:.95;color:var(--paper)}
+  .recruit .join .stroke{color:transparent;-webkit-text-stroke:2px var(--sky)}
+  .recruit .ja{margin-top:36px;font-size:clamp(14px,1.8vw,18px);font-weight:500;letter-spacing:.24em}
+  .recruit .sub{margin-top:16px;font-size:12px;font-weight:400;letter-spacing:.16em;color:#9FB0C9;line-height:2.2}
+  .recruit .btn{display:inline-block;margin-top:44px;border:1px solid var(--paper);padding:16px 42px;font-size:12px;font-weight:500;letter-spacing:.3em;transition:.3s}
+  .recruit .btn:hover{background:var(--paper);color:var(--ink)}
+
+  /* ============ NEWS（C: 細罫リスト） ============ */
+  .news{padding:130px 0 150px}
   .n-list{border-top:1px solid var(--hair)}
   .n-row{display:grid;grid-template-columns:130px 1fr;gap:30px;align-items:baseline;padding:24px 6px;border-bottom:1px solid var(--hair);transition:background .4s}
-  .n-row:hover{background:rgba(31,31,29,.02)}
+  .n-row:hover{background:rgba(169,217,245,.12)}
   .n-row .d{font-family:"Outfit",sans-serif;font-weight:300;font-size:11px;letter-spacing:.16em;color:var(--mute)}
   .n-row .t{font-size:12.5px;letter-spacing:.1em;color:var(--ink-2)}
-  .n-more{display:inline-block;margin-top:34px;font-family:"Outfit",sans-serif;font-weight:300;font-size:10px;letter-spacing:.3em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:opacity .3s}
-  .n-more:hover{opacity:.5}
+  .n-more{display:inline-block;margin-top:34px;font-family:"Outfit",sans-serif;font-weight:400;font-size:10px;letter-spacing:.3em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:.3s;text-transform:uppercase}
+  .n-more:hover{color:var(--accent);border-color:var(--accent)}
 
-  /* ============ FOOTER ============ */
+  /* ============ FOOTER（C: 静か） ============ */
   footer{border-top:1px solid var(--hair);padding:80px 0 60px;text-align:center}
   footer .f-brand{font-size:12px;font-weight:500;letter-spacing:.42em;color:var(--ink)}
   footer .f-addr{margin-top:22px;font-size:10.5px;letter-spacing:.2em;line-height:2.4;color:var(--mute)}
   footer .f-links{margin-top:30px;display:flex;justify-content:center;gap:26px;flex-wrap:wrap}
   footer .f-links a{font-size:10px;letter-spacing:.24em;color:var(--ink-2);border-bottom:1px solid transparent;padding-bottom:2px;transition:.3s}
-  footer .f-links a:hover{border-color:var(--ink-2)}
-  footer .cp{margin-top:44px;font-family:"Outfit",sans-serif;font-weight:300;font-size:9px;letter-spacing:.26em;color:var(--mute)}
+  footer .f-links a:hover{color:var(--accent);border-color:var(--accent)}
+  footer .cp{margin-top:44px;font-family:"Outfit",sans-serif;font-weight:300;font-size:9px;letter-spacing:.26em;color:var(--mute);text-transform:uppercase}
 
   /* ============ RESPONSIVE ============ */
   @media (max-width:900px){
     .wrap,.narrow,.full-photo{padding:0 24px}
-    .hero{padding:100px 0 80px}
+    .hero{padding:80px 0 70px}
     .facts .wrap{grid-template-columns:repeat(2,1fr)}
     .fact:nth-child(3){border-left:0}
     .fact:nth-child(3),.fact:nth-child(4){border-top:1px solid var(--hair)}
@@ -127,14 +148,15 @@
     .biz-item.rev .ph{order:0}
     .p-row{grid-template-columns:60px 1fr;gap:16px}
     .p-row p{grid-column:2}
-    .statement{padding:110px 0}
+    .statement{padding:100px 0}
     .statement p{text-align:left;line-height:2.6}
-    .full-photo img{height:46vh}
+    .full-photo .duo{height:44vh}
+    .recruit{padding:90px 0}
   }
   @media (max-width:560px){
     header .wrap{flex-direction:column;gap:14px}
     nav{gap:16px}
-    .hero h1{letter-spacing:.18em;text-indent:.18em}
+    .hero .ja{letter-spacing:.14em}
     .n-row{grid-template-columns:1fr;gap:6px;padding:18px 4px}
   }
 </style>
@@ -152,21 +174,22 @@
       <a href="../company/">会社案内</a>
       <a href="../contact/">お問い合わせ</a>
     </nav>
-    <div class="switcher en">PROPOSAL&nbsp;&nbsp;<a href="../">A</a>&nbsp;/&nbsp;<a href="../design-b/">B</a>&nbsp;/&nbsp;<b>C</b>&nbsp;/&nbsp;<a href="../design-d/">D</a>&nbsp;/&nbsp;<a href="../design-e/">E</a></div>
+    <div class="switcher en">PROPOSAL&nbsp;&nbsp;<a href="../">A</a> / <a href="../design-b/">B</a> / <a href="../design-c/">C</a> / <a href="../design-d/">D</a> / <b>E</b></div>
   </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <p class="loc en reveal">SINCE 1933 — TOTTORI, JAPAN</p>
-  <h1 class="reveal">つくるを超え、<br/>カタチにするパートナーへ。</h1>
+  <p class="loc en reveal">SINCE 1933 — TOTTORI, JAPAN / METAL FABRICATION</p>
+  <h1 class="reveal">Make <span class="blue">Real</span> Things.</h1>
+  <p class="ja reveal">つくるを超え、カタチにするパートナーへ。</p>
   <div class="rule reveal"></div>
 </section>
 
 <!-- ============ PHOTO ============ -->
 <figure class="full-photo reveal">
-  <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=80" alt="工場" loading="eager">
-  <figcaption>FACTORY — KATSUHARA SEISAKUSHO</figcaption>
+  <div class="duo"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=80" alt="工場" loading="eager"></div>
+  <figcaption>Factory — Hover to reveal</figcaption>
 </figure>
 
 <!-- ============ FACTS ============ -->
@@ -175,20 +198,20 @@
     <div class="fact"><div class="v en">1933</div><div class="k">創業</div></div>
     <div class="fact"><div class="v en">57<small>名</small></div><div class="k">従業員</div></div>
     <div class="fact"><div class="v en">4<small>棟</small></div><div class="k">自社工場</div></div>
-    <div class="fact"><div class="v en">ISO<small>9001 / 14001</small></div><div class="k">認証</div></div>
+    <div class="fact"><div class="v en">ISO<small>×2</small></div><div class="k">9001 / 14001</div></div>
   </div>
 </div>
 
 <!-- ============ STATEMENT ============ -->
 <section class="statement">
   <div class="narrow reveal">
-    <p class="label en">PHILOSOPHY</p>
+    <p class="label en">Philosophy</p>
     <p>
       昭和8年、鳥取の小さな鉄工所からはじまりました。<br/>
-      時代とともに、つくるものは変わっても、<br/>
-      <b>誠実にものをつくる姿勢</b>だけは、変わっていません。<br/>
+      つくるものは変わっても、<b>誠実にものをつくる姿勢</b>は変わりません。<br/>
+      図面のないアイデアも、<span class="marker">工場は、カタチにできる。</span><br/>
       企画から設計、加工、量産、そのあとまで。<br/>
-      わたしたちは、<b>カタチにするすべての工程</b>と向き合います。
+      わたしたちは、すべての工程と向き合います。
     </p>
   </div>
 </section>
@@ -200,13 +223,13 @@
       <span class="no en">01</span>
       <h2>事業</h2>
       <span class="line"></span>
-      <span class="no en">BUSINESS</span>
+      <span class="en-tag">Business</span>
     </div>
 
     <div class="biz-item reveal">
-      <div class="ph"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80" alt="エクステリア" loading="lazy"></div>
+      <div class="ph"><div class="duo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80" alt="エクステリア" loading="lazy"></div></div>
       <div class="txt">
-        <p class="en-label">EXTERIOR</p>
+        <p class="en-label">Exterior</p>
         <h3>エクステリア事業</h3>
         <p>機能と佇まいをともにデザインした、自社ブランドのエクステリア製品。企画・設計から製造まで、一貫してつくります。</p>
         <a class="more en" href="../business/#exterior">VIEW MORE</a>
@@ -214,9 +237,9 @@
     </div>
 
     <div class="biz-item rev reveal">
-      <div class="ph"><img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1400&q=80" alt="受託製造" loading="lazy"></div>
+      <div class="ph"><div class="duo"><img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1400&q=80" alt="受託製造" loading="lazy"></div></div>
       <div class="txt">
-        <p class="en-label">CONTRACT MANUFACTURING</p>
+        <p class="en-label">Contract Manufacturing</p>
         <h3>受託製造事業</h3>
         <p>金属加工・板金部品を、試作から量産まで。産業機器、医療、自動車。分野を超えて、精度と誠実で応えます。</p>
         <a class="more en" href="../business/#contract">VIEW MORE</a>
@@ -232,7 +255,7 @@
       <span class="no en">02</span>
       <h2>できること</h2>
       <span class="line"></span>
-      <span class="no en">PROCESS</span>
+      <span class="en-tag">Process</span>
     </div>
     <div class="p-list reveal">
       <div class="p-row"><span class="no en">01</span><h3>企画・構想</h3><p>市場調査、コンセプト立案、仕様のご提案</p></div>
@@ -246,6 +269,16 @@
   </div>
 </section>
 
+<!-- ============ RECRUIT（大胆ブロック） ============ -->
+<section class="recruit">
+  <div class="wrap reveal">
+    <p class="join">Join <span class="stroke">Us.</span></p>
+    <p class="ja">ものづくりの未来を、一緒につくろう。</p>
+    <p class="sub">挑戦を楽しみ、成長し続ける仲間を募集しています。</p>
+    <a class="btn en" href="../recruit/">RECRUIT →</a>
+  </div>
+</section>
+
 <!-- ============ NEWS ============ -->
 <section class="news" id="news">
   <div class="wrap">
@@ -253,7 +286,7 @@
       <span class="no en">03</span>
       <h2>お知らせ</h2>
       <span class="line"></span>
-      <span class="no en">NEWS</span>
+      <span class="en-tag">News</span>
     </div>
     <div class="n-list reveal" id="newsList">
       <div class="n-row"><span class="d en">2026.04.01</span><span class="t">ゴールデンウィーク休業のお知らせ</span></div>
@@ -275,11 +308,10 @@
       <a href="../recruit/">採用情報</a>
       <a href="../contact/">お問い合わせ</a>
       <a href="../" class="en">PROPOSAL A</a>
-      <a href="../design-b/" class="en">PROPOSAL B</a>
+      <a href="../design-c/" class="en">PROPOSAL C</a>
       <a href="../design-d/" class="en">PROPOSAL D</a>
-      <a href="../design-e/" class="en">PROPOSAL E</a>
     </div>
-    <p class="cp">© KATSUHARA SEISAKUSHO CO., LTD. — DESIGN PROPOSAL TYPE-C (MINIMAL CRAFT)</p>
+    <p class="cp">© Katsuhara Seisakusho Co., Ltd. — Design Proposal Type-E (C×D Hybrid)</p>
   </div>
 </footer>
 
